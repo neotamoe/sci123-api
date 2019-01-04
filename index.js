@@ -19,7 +19,7 @@ var databaseURI = '';
 // are running on Heroku
 if(process.env.MONGODB_URI != undefined) {
    // use the string value of the environment variable
-   databaseURI = process.env.MONGODB_URI;
+   databaseURI = process.env.MONGOLAB_GOLD_URI;
 } else {
    // use the local database server
    databaseURI = 'mongodb://localhost:27017/sci123Solo';
