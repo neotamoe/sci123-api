@@ -13,9 +13,19 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/sci123Solo');
+var databaseURI = '';
 
-var db = mongoose.connection;
+// process.env.MONGODB_URI will only be defined if you 
+// are running on Heroku
+if(process.env.MONGODB_URI != undefined) {
+   // use the string value of the environment variable
+   databaseURI = process.env.MONGODB_URI;
+} else {
+   // use the local database server
+   databaseURI = 'mongodb://localhost:27017/sci123Solo';
+}
+
+mongoose.connect(databaseURI);
 
 var port = process.env.PORT || 8080;
 
